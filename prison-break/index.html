@@ -9,9 +9,27 @@
   </head>
   <body>
     <a-scene>
+      <a-assets>
+        <a-asset-item id="toilet-obj" src="./toilet/Toilet.obj"></a-asset-item>
+        <a-asset-item id="toilet-mtl" src="./toilet/Toilet.mtl"></a-asset-item>
+        <a-asset-item id="tree-gltf" src="./tree/tree01.gltf"></a-asset-item>
+      </a-assets>
 
     <a-entity position="-1.950 -1.4 3.649">
-      <a-plane position="0 0 0" rotation="-90 0 0" color="green" width=100 height=100></a-plane>
+      <a-entity scale="0.005 0.005 0.005">
+        <a-obj-model src="#toilet-obj" mtl="#toilet-mtl" position="-1088.9128303397267 -18.937662648092385 -654.017989937994" rotation="0 40 0" material="" obj-model=""></a-obj-model>
+        <!-- Tree -->
+        <a-entity gltf-model="./tree/tree01.gltf" position="-0.548 1 -3521.4512839835847">
+        <a-plane rotation="-90 0 0" color="green" width="100" height="100" material="" geometry=""></a-plane></a-entity>
+        <a-entity gltf-model="./tree/tree01.gltf" position="-741.6516044954774 1 -3166.936375467533">
+        <a-plane rotation="-90 0 0" color="green" width="100" height="100" material="" geometry=""></a-plane></a-entity>
+        <a-entity gltf-model="./tree/tree01.gltf" position="532.6604115390327 1 -2839.907701128979">
+        <a-plane rotation="-90 0 0" color="green" width="100" height="100" material="" geometry=""></a-plane></a-entity>
+        <a-entity gltf-model="./tree/tree01.gltf" position="-1384.7270563454867 1 -2597.6350666734547">
+        <a-plane rotation="-90 0 0" color="green" width="100" height="100" material="" geometry=""></a-plane></a-entity>
+        <a-entity gltf-model="./tree/tree01.gltf" position="931.2451897720775 1 -2639.73146639057">
+        <a-plane rotation="-90 0 0" color="green" width="100" height="100" material="" geometry=""></a-plane></a-entity>
+      </a-entity>
 
       <!-- floor and ceiling -->
       <a-plane position="0 6 0" rotation="90 0 0" color="grey" width=12 height=8 shadow="receive: true"></a-plane>
@@ -75,10 +93,6 @@
 
       <a-cylinder color="pink" position="0.2 1.7 2.7" height="0.4" radius=".5" shadow="cast: true; receive: true">
         <a-text value="cake" position="0 1 0" color="white"></a-text>
-      </a-cylinder>
-
-      <a-cylinder color="teal" position="-4.3 0.7 -2.4" height=".7" radius=".5" shadow="cast: true; receive: true">
-        <a-text value="bucket" position="0 1 0" color="white"></a-text>
       </a-cylinder>
 
       <a-cylinder color="white" position="-4.3 0.7 2.4" height="1.6" radius="1" shadow="cast: true; receive: true">
