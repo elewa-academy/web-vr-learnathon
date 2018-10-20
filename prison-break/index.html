@@ -10,16 +10,14 @@
   <body>
     <a-scene>
       <a-assets>
-        <a-asset-item id="toilet-obj" src="./toilet/Toilet.obj"></a-asset-item>
-        <a-asset-item id="toilet-mtl" src="./toilet/Toilet.mtl"></a-asset-item>
         <a-asset-item id="tree-gltf" src="./tree/tree01.gltf"></a-asset-item>
         <a-asset-item id="cake-gltf" src="./cake/Cake_01.gltf"></a-asset-item>
         <a-asset-item id="table-gltf" src="./table/Table_Large_Rectangular_01.gltf"></a-asset-item>
+        <a-asset-item id="bucket-gltf" src="./bucket/bucket4.gltf"></a-asset-item>
       </a-assets>
 
     <a-entity position="-1.950 -1.4 3.649">
       <a-entity scale="0.005 0.005 0.005">
-        <a-obj-model src="#toilet-obj" mtl="#toilet-mtl" position="-1088.9128303397267 -18.937662648092385 -654.017989937994" rotation="0 40 0" material="" obj-model=""></a-obj-model>
         <!-- Tree -->
         <a-entity gltf-model="#tree-gltf" position="-0.548 1 -3521.4512839835847">
         <a-plane rotation="-90 0 0" color="green" width="100" height="100" material="" geometry=""></a-plane></a-entity>
@@ -35,6 +33,8 @@
         <a-entity gltf-model="#cake-gltf" position="89.05659833254235 190.67998548780363 672.4835385059337" scale="10 10 10"></a-entity>
         <!-- Table -->
         <a-entity gltf-model="#table-gltf" position="145.50449109984675 7.121892308906894 673.5393671721408" scale="20 25 25" rotation="0 90 0"></a-entity>
+        <!-- Bucket -->
+        <a-entity gltf-model="#bucket-gltf" position="-968.7636302040321 -1.670101794063953 -591.6686255832393" scale="0.75 0.75 0.75" rotation="270 0 0"></a-entity>
       </a-entity>
 
       <!-- floor and ceiling -->
