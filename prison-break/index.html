@@ -16,6 +16,14 @@
         <a-asset-item id="bucket-gltf" src="./bucket/bucket4.gltf"></a-asset-item>
         <img id="stone-texture" src="./stones.jpg"></img>
         <img id="concrete-texture" src="./concrete.jpg"></img>
+
+        <a-asset-item id="bed-obj" src="bed/bed.obj"></a-asset-item>
+        <a-asset-item id="bed-mtl" src="bed/bed.mtl"></a-asset-item>
+        <a-asset-item id="guy-obj" src="skinnyguy/skinnyguy.obj"></a-asset-item>
+        <a-asset-item id="guy-mtl" src="skinnyguy/skinnyguy.mtl"></a-asset-item>
+        <a-asset-item id="cop-obj" src="cop/cop.obj"></a-asset-item>
+        <a-asset-item id="cop-mtl" src="cop/cop.mtl"></a-asset-item>
+
       </a-assets>
 
     <a-entity position="-1.950 -1.4 3.649">
@@ -37,6 +45,12 @@
         <a-entity gltf-model="#table-gltf" position="145.50449109984675 7.121892308906894 673.5393671721408" scale="20 25 25" rotation="0 90 0"></a-entity>
         <!-- Bucket -->
         <a-entity gltf-model="#bucket-gltf" position="-968.7636302040321 -1.670101794063953 -591.6686255832393" scale="0.75 0.75 0.75" rotation="270 0 0"></a-entity>
+        <!-- Bed -->
+        <a-entity id="bed" obj-model="obj:#bed-obj;mtl:#bed-mtl" position="962.48245.49 122" rotation="0 90.5 0" scale="445.91 445.917 445.917"></a-entity>
+        <!-- Da guy -->
+        <a-entity id="guy" obj-model="obj:#guy-obj;mtl:#guy-mtl" position="-917.447 -420.9 665.189" rotation="0 127.1910180245661 0" scale="13.7 13.7 13.7"></a-entity>
+        <!-- Cop -->
+        <a-entity id="cop" obj-model="obj:cop/cop.obj;mtl:cop/cop.mtl" position="-1485.86 0.05 2.97" rotation="0 15.465 0" scale="126.745 126.74 126.74"></a-entity>
       </a-entity>
 
       <!-- floor and ceiling -->
@@ -135,18 +149,24 @@
 
       <!-- furniture -->
 
+      <!--
       <a-box id="bed" position="4.65 0.25 0.65" rotation="0 90 0" depth=2.2 height=1 width=4.5 color="white" shadow="cast: true; receive: true">
       </a-box>
+      -->
 
+      <!--
       <a-cylinder color="white" position="-4.3 0.7 2.4" height="1.6" radius="1" shadow="cast: true; receive: true">
         <a-text value="cellmate" position="0 1 0" color="white"></a-text>
       </a-cylinder>
+      -->
 
       <a-plane id="poster" position="5.99 3 0" rotation="0 -90 5" color="#efefef" src="poster.png" width=1.7 height=2.2 shadow="cast: true; receive: true"></a-plane>
 
+      <!--
       <a-box position="-8.2 1.7 -2.4" rotation="0 0 0" depth=3 height=3 width=2.5 color="turquoise" shadow="cast: true; receive: true">
         <a-text value="guard" position="0 0 3.5" color="magenta"></a-text>
       </a-box>
+      -->
 
       <a-light color="#fbf9a2" position="0.2 2.23 2.69" intensity="0.3" type="point" light="color:#f7a62d;intensity:0.45;castShadow:true;decay:0"></a-light>
 
