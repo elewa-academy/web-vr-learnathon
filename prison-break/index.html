@@ -6,6 +6,7 @@
     <title>repl.it</title>
     <script src="https://aframe.io/releases/0.8.0/aframe.min.js"></script>
     <script src="https://rawgit.com/feiss/aframe-environment-component/master/dist/aframe-environment-component.min.js"></script>
+    <script src="./audiohandler-component.js"></script>
   </head>
   <body>
     <a-scene>
@@ -14,72 +15,77 @@
         <a-asset-item id="cake-gltf" src="./cake/Cake_01.gltf"></a-asset-item>
         <a-asset-item id="table-gltf" src="./table/Table_Large_Rectangular_01.gltf"></a-asset-item>
         <a-asset-item id="bucket-gltf" src="./bucket/bucket4.gltf"></a-asset-item>
-        <img id="stone-texture" src="./stones.jpg"></img>
-        <img id="concrete-texture" src="./concrete.jpg"></img>
-
         <a-asset-item id="bed-obj" src="bed/bed.obj"></a-asset-item>
         <a-asset-item id="bed-mtl" src="bed/bed.mtl"></a-asset-item>
         <a-asset-item id="guy-obj" src="skinnyguy/skinnyguy.obj"></a-asset-item>
         <a-asset-item id="guy-mtl" src="skinnyguy/skinnyguy.mtl"></a-asset-item>
         <a-asset-item id="cop-obj" src="cop/cop.obj"></a-asset-item>
         <a-asset-item id="cop-mtl" src="cop/cop.mtl"></a-asset-item>
-
+        <img id="stone-texture" src="./textures/stones.png"></img>
+        <img id="concrete-texture" src="./textures/concrete.png"></img>
+        <img id="poster" src="./textures/poster.png"></img>
+        <audio id="soundtrack" src="./sounds/soundtrack.mp3" preload="auto" volume=.8></audio>
+        <audio id="outsidesounds" src="./sounds/outside.mp3" preload = "auto"></audio>
+        <audio id="snoringsounds" src="./sounds/snoring.mp3"></audio>
       </a-assets>
 
     <a-entity position="-1.950 -1.4 3.649">
+
+      <!-- sound sources -->
+      <a-entity sound="src:#outsidesounds;autoplay:true;volume:0.9;loop:true" position="0 2 -15"></a-entity>
+      
       <a-entity scale="0.005 0.005 0.005">
-        <!-- Tree -->
-        <a-entity gltf-model="#tree-gltf" position="-0.548 1 -3521.4512839835847">
-        <a-plane rotation="-90 0 0" color="green" width="100" height="100" material="" geometry=""></a-plane></a-entity>
-        <a-entity gltf-model="#tree-gltf" position="-741.6516044954774 1 -3166.936375467533">
-        <a-plane rotation="-90 0 0" color="green" width="100" height="100" material="" geometry=""></a-plane></a-entity>
-        <a-entity gltf-model="#tree-gltf" position="532.6604115390327 1 -2839.907701128979">
-        <a-plane rotation="-90 0 0" color="green" width="100" height="100" material="" geometry=""></a-plane></a-entity>
-        <a-entity gltf-model="#tree-gltf" position="-1384.7270563454867 1 -2597.6350666734547">
-        <a-plane rotation="-90 0 0" color="green" width="100" height="100" material="" geometry=""></a-plane></a-entity>
-        <a-entity gltf-model="#tree-gltf" position="931.2451897720775 1 -2639.73146639057">
-        <a-plane rotation="-90 0 0" color="green" width="100" height="100" material="" geometry=""></a-plane></a-entity>
+        <!-- Trees -->
+        <!-- <a-entity gltf-model="./tree/tree01.gltf" position="2308.3822980577343 -0.67 -2773" rotation="0 46 0" scale="4 4 4" material="color: black; emissiveIntensity: 0"></a-entity> -->
+
+
         <!-- Cake -->
-        <a-entity id="cake" gltf-model="#cake-gltf" position="89.05659833254235 299.3052096997687 672.4835385059337" scale="15 15 15"></a-entity>
+        <a-entity id="cake" gltf-model="#cake-gltf" position="89.05659833254235 299.3052096997687 672.4835385059337" scale="15 15 15" shadow="cast: true; receive: false"></a-entity>
+
         <!-- Table -->
-        <a-entity id="table" gltf-model="#table-gltf" position="145.50449109984675 7.121892308906894 673.5393671721408" scale="30 40 30" rotation="0 90 0"></a-entity>
+        <a-entity id="table" gltf-model="#table-gltf" position="145.50449109984675 7.121892308906894 673.5393671721408" scale="30 40 30" rotation="0 90 0" shadow="cast: false; receive: true"></a-entity>
+
         <!-- Bucket -->
-        <a-entity id="bucket" gltf-model="#bucket-gltf" position="-1036.785459765963 -1.670101794063953 -636.1078453828103" scale="0.5 0.5 0.5" rotation="270 0 0"></a-entity>
+        <a-entity id="bucket" gltf-model="#bucket-gltf" position="-1036.785459765963 -1.670101794063953 308.92265897959635" scale="0.5 0.5 0.5" rotation="270 0 0" shadow="cast: false; receive: true"></a-entity>
+
         <!-- Bed -->
-        <a-entity id="bed" obj-model="obj:#bed-obj;mtl:#bed-mtl" position="962.48245.49 122" rotation="0 90.5 0" scale="445.91 445.917 445.917"></a-entity>
+        <a-entity id="bed" obj-model="obj:#bed-obj;mtl:#bed-mtl" position="962.48245.49 122" rotation="0 90.5 0" scale="445.91 445.917 445.917" shadow="cast: false; receive: true"></a-entity>
+
         <!-- Da guy -->
-        <a-entity id="guy" obj-model="obj:#guy-obj;mtl:#guy-mtl" position="-917.447 -420.9 665.189" rotation="0 127.1910180245661 0" scale="13.7 13.7 13.7"></a-entity>
-        <!-- Cop -->
-        <a-entity id="cop" obj-model="obj:cop/cop.obj;mtl:cop/cop.mtl" position="-1485.86 0.05 2.97" rotation="0 15.465 0" scale="126.745 126.74 126.74"></a-entity>
+        <a-entity id="guy" obj-model="obj:#guy-obj;mtl:#guy-mtl" position="-917.447 -420.9 665.189" rotation="0 127.1910180245661 0" scale="13.7 13.7 13.7" shadow="cast: false; receive: true"></a-entity>
+
+        <!-- Guard -->
+        <a-entity id="cop" obj-model="obj:cop/cop.obj;mtl:cop/cop.mtl" position="-1626.289 0.050 -495.529" rotation="0 15.465 0" scale="126.745 126.74 126.74" sound="src:#snoringsounds;autoplay:true;volume:0.3;loop:true" shadow="cast: true; receive: false"></a-entity>
       </a-entity>
 
       <!-- floor and ceiling -->
       <a-plane position="0 6 0" rotation="90 0 0"
-      color="grey" src="#concrete-texture" side="double"
-      width=12 height=8 shadow="receive: true" normal-scale=5></a-plane>
+      color="grey" src="#concrete-texture"
+      width=12 height=8 shadow="receive: true" normal-scale=5 material="roughness:.8" audiohandler></a-plane>
+
       <a-plane position="0 0.01 0" rotation="-90 0 0"
-      color="#333" src="#concrete-texture" side="double"
-      width=12 height=8 shadow="receive: true"></a-plane>
+      color="#333" src="#concrete-texture"
+      width=12 height=8 shadow="receive: true" material="roughness:.8" audiohandler></a-plane>
 
       <!-- walls without opening -->
       <a-plane position="6 4 0" rotation="0 -90 0"
-      color="#666" material="src: #stone-texture; repeat: 2 2" side="double"
-      width=8 height=8 shadow="receive: true"></a-plane>
+      color="#666" material="src: #stone-texture; repeat: 2 2 roughness:.8"
+      width=8 height=8 shadow="receive: true" audiohandler></a-plane>
       <a-plane position="0 2 4" rotation="180 0 0"
-      color="#666" material="src: #stone-texture; repeat: 3.1 2" side="double"
+      color="#666" material="src: #stone-texture; repeat: 3.1 2 roughness:.8"
       width=12 height=8 shadow="receive: true"></a-plane>
 
       <!-- walll with door  -->
       <a-entity position="-6 4 0 shadow="receive: true"">
         <a-box position="0 0 3" rotation="0 -90 0"
-        color="grey" material="src: #stone-texture; repeat: 1 2"
-        width=4 height=8 depth=0.5></a-box>
+        color="grey" material="src: #stone-texture; repeat: 1 2 roughness:.8"
+        width=4 height=8 depth=0.5 shadow="cast: true; receive: false"></a-box>
         <a-box position="0 0 -3" rotation="0 -90 0"
-        color="grey" material="src: #stone-texture; repeat: .5 2"
-        width=2 height=8 depth=0.5></a-box>
+        color="grey" material="src: #stone-texture; repeat: .5 2 roughness:.8"
+        width=2 height=8 depth=0.5 shadow="cast: true; receive: false" audiohandler></a-box>
         <a-box position="0 2 -.5" rotation="0 -90 0"
-        color="grey" material="src: #stone-texture; repeat: 1 1"
-        width=3 height=4 depth=0.5></a-box>
+        color="grey" material="src: #stone-texture; repeat: 1 1 roughness:.8"
+        width=3 height=4 depth=0.5 shadow="cast: true; receive: false"></a-box>
 
         <a-box position="0 -4 -.5" rotation="0 -90 0" color="black"
         width=3 height=.2 depth=0.5></a-box>
@@ -87,100 +93,87 @@
         width=3 height=.2 depth=0.5></a-box>
 
         <a-entity position="0 -2 -.5" rotation="0 0 0">
-          <a-cylinder color="black" position="0 0 -1" height="5" radius=".05"></a-cylinder>
-          <a-cylinder color="black" position="0 0 -.6" height="5" radius=".05"></a-cylinder>
-          <a-cylinder color="black" position="0 0 -.2" height="5" radius=".05"></a-cylinder>
-          <a-cylinder color="black" position="0 0 .2" height="5" radius=".05"></a-cylinder>
-          <a-cylinder color="black" position="0 0 .6" height="5" radius=".05"></a-cylinder>
-          <a-cylinder color="black" position="0 0 1" height="5" radius=".05"></a-cylinder>
+          <a-cylinder color="black" position="0 0 -1" height="5" radius=".05" shadow="cast: true"></a-cylinder>
+          <a-cylinder color="black" position="0 0 -.6" height="5" radius=".05" shadow="cast: true"></a-cylinder>
+          <a-cylinder color="black" position="0 0 -.2" height="5" radius=".05" shadow="cast: true"></a-cylinder>
+          <a-cylinder color="black" position="0 0 .2" height="5" radius=".05" shadow="cast: true"></a-cylinder>
+          <a-cylinder color="black" position="0 0 .6" height="5" radius=".05" shadow="cast: true"></a-cylinder>
+          <a-cylinder color="black" position="0 0 1" height="5" radius=".05" shadow="cast: true"></a-cylinder>
         </a-entity>
       </a-entity>
 
       <!-- prison hallway -->
       <a-entity position="-11 4 0" shadow="receive: true">
         <a-plane position="2.5 -3.99 0" rotation="-90 0 0"
-        color="#333" src="#concrete-texture" side="double"
+        color="#333" src="#concrete-texture"
         width=5 height=20></a-plane>
         <a-plane position="2.5 4 0" rotation="90 0 0"
-        color="#333" src="#concrete-texture" side="double"
+        color="#111"
         width=5 height=20></a-plane>
 
-        <a-plane position="5 0 7" rotation="180 90 0"
-        color="grey" material="src: #stone-texture; repeat: 2 2" side="double"
+        <a-plane position="5 0 7" rotation="180 -90 0"
+        color="#111"
         width=6 height=8></a-plane>
-        <a-plane position="5 0 -7" rotation="180 90 0"
-        color="grey" material="src: #stone-texture; repeat: 2 2" side="double"
+        <a-plane position="5 0 -7" rotation="180 -90 0"
+        color="grey" material="src: #stone-texture; repeat: 2 2"
         width=6 height=8></a-plane>
 
         <a-plane position="2.5 0 -10" rotation="0 0 0"
-        color="#333" material="src: #stone-texture; repeat: 2 2" side="double"
-        width=5 height=8></a-plane>
+        color="#111" width=5 height=8></a-plane>
         <a-plane position="2.5 0 10" rotation="0 180 0"
-        color="#333" material="src: #stone-texture; repeat: 2 2" side="double"
-        width=5 height=8></a-plane>
-        <a-plane position="0 0 0" rotation="0 90 0" color="#333" side="double"
+        color="#111" width=5 height=8></a-plane>
+        <a-plane position="0 0 0" rotation="0 90 0" color="#333"
         material="src: #stone-texture; repeat: 2 2"
         width=20 height=8></a-plane>
       </a-entity>
 
       <!-- wall with window -->
-      <a-entity position="2 4 -4" rotation="0 -90 0" shadow="receive: true">
-        <a-entity material="src: #stone-texture; repeat: 2 2">
+      <a-entity position="2 4 -4" rotation="0 -90 0" shadow="receive: false">
+        <a-entity material="src: #stone-texture; repeat: 2 2 roughness:.8">
           <a-box position="0 0 4.5" rotation="0 90 0"
-          color="grey" material="src: #stone-texture; repeat: 2 2"
+          color="grey" material="src: #stone-texture; repeat: 2 2 roughness:.8"
           width=7 height=8 depth=0.5></a-box>
           <a-box position="0 0 -2.5" rotation="0 90 0" color="grey"
-          material="src: #stone-texture; repeat: .6 2"
+          material="src: #stone-texture; repeat: .6 2 roughness:.8"
           width=3 height=8 depth=0.5></a-box>
           <a-box position="0 -3 0" rotation="0 90 0" color="grey"
-          material="src: #stone-texture; repeat: .5 .5"
+          material="src: #stone-texture; repeat: .5 .5 roughness:.8"
           width=2 height=2 depth=0.5></a-box>
           <a-box position="0 2 0" rotation="0 90 0"
-          color="grey" material="src: #stone-texture; repeat: 0.5 1"
+          color="grey" material="src: #stone-texture; repeat: 0.5 1 roughness:.8"
           width=2 height=4 depth=0.5></a-box>
         </a-entity>
+
         <a-entity position="0 -1 0">
-          <a-cylinder color="black" position="0 0 -.6" height="2" radius=".05"></a-cylinder>
-          <a-cylinder color="black" position="0 0 -.2" height="2" radius=".05"></a-cylinder>
-          <a-cylinder color="black" position="0 0 .2" height="2" radius=".05"></a-cylinder>
-          <a-cylinder color="black" position="0 0 .6" height="2" radius=".05"></a-cylinder>
+          <a-cylinder color="black" position="0 0 -.6" height="2" radius=".05" shadow="cast: true"></a-cylinder>
+          <a-cylinder color="black" position="0 0 -.2" height="2" radius=".05" shadow="cast: true"></a-cylinder>
+          <a-cylinder color="black" position="0 0 .2" height="2" radius=".05" shadow="cast: true"></a-cylinder>
+          <a-cylinder color="black" position="0 0 .6" height="2" radius=".05" shadow="cast: true"></a-cylinder>
         </a-entity>
       </a-entity>
 
-      <!-- furniture -->
+      <!-- poster -->
+      <a-plane id="poster" position="5.99 3 0" rotation="0 -90 5" color="#efefef" src="./textures/poster.png" width=1.7 height=2.2 shadow="cast: false; receive: true"></a-plane>
 
-      <!--
-      <a-box id="bed" position="4.65 0.25 0.65" rotation="0 90 0" depth=2.2 height=1 width=4.5 color="white" shadow="cast: true; receive: true">
-      </a-box>
-      -->
+      <!-- light -->
+      <a-light color="#fbf9a2" position="0.309 2.507 2.937" intensity="0.3" type="point" light="color:#f7a62d;intensity:50.24;castShadow:true;decay:17.400000000000002;penumbra:0.11;distance:17.23"></a-light>
 
-      <!--
-      <a-cylinder color="white" position="-4.3 0.7 2.4" height="1.6" radius="1" shadow="cast: true; receive: true">
-        <a-text value="cellmate" position="0 1 0" color="white"></a-text>
-      </a-cylinder>
-      -->
+      <a-light color="#f7b937" position="-10.939327700557666 4.97794818947587 -6.182436812907182" intensity="0.5" type="point" rotation="4.972 -93.73272692733187 -13.784188816296268" light="color:#be31fb;intensity:1.63;castShadow:true;decay:1.15"></a-light>
 
-      <a-plane id="poster" position="5.99 3 0" rotation="0 -90 5" color="#efefef" src="poster.png" width=1.7 height=2.2 shadow="cast: true; receive: true"></a-plane>
+      <a-light color="#f7b937" position="-2.9402369625023055 4.156436671453867 -10.030487634517025" intensity="0.5" type="point" rotation="7.318963033531291 -3.826491691718728 -0.4881820405332472" light="color:#f39e41;intensity:1.5300000000000002;castShadow:true;decay:0"></a-light>
 
-      <!--
-      <a-box position="-8.2 1.7 -2.4" rotation="0 0 0" depth=3 height=3 width=2.5 color="turquoise" shadow="cast: true; receive: true">
-        <a-text value="guard" position="0 0 3.5" color="magenta"></a-text>
-      </a-box>
-      -->
-
-      <a-light color="#fbf9a2" position="0.2 2.23 2.69" intensity="0.3" type="point" light="color:#f7a62d;intensity:0.45;castShadow:true;decay:0"></a-light>
-
-      <a-light color="#f7b937" position="-9.56 3.17 -7.96" intensity="0.5" type="directional" rotation="0 -41.68 0" light="color:#f9ffea;intensity:0.4;castShadow:true"></a-light>
-
-      <a-entity environment="preset: starry; shadow: false; groundColor: #333; grid: none"></a-entity>
+      <a-entity environment="preset: starry; shadow: false; groundColor: #111; grid: none; lightPosition: 0 -0.02 -4.68; flatShading:true"></a-entity>
 
     </a-entity>
 
 
-    <a-entity id="camera" camera="active:false" look-controls="" rotation="0.458366236104659 2.0626480624709687 0" data-aframe-inspector-original-camera="">
-        <a-entity cursor="fuse:true;fuseTimeout:2000" position="4 2 -2" geometry="primitive:ring;radiusInner:0.02;radiusOuter:0.03" material="color:black;shader:flat" raycaster="">
-        </a-entity>
+    <a-entity camera look-controls position="0 2 0">
+      <a-entity cursor="fuse: true; fuseTimeout: 300"
+                position="0 0 -1"
+                geometry="primitive: ring; radiusInner: 0.02; radiusOuter: 0.03"
+                material="color: black; shader: flat">
       </a-entity>
+    </a-entity>
 
     </a-scene>
   </body>
