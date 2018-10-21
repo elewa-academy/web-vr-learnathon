@@ -3,32 +3,36 @@
   <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width">
-    <title>repl.it</title>
+    <title>Prisonbreak</title>
     <script src="https://aframe.io/releases/0.8.0/aframe.min.js"></script>
     <script src="https://rawgit.com/feiss/aframe-environment-component/master/dist/aframe-environment-component.min.js"></script>
     <script src="./audiohandler-component.js"></script>
+    <script src="./birthdaygreeting-component.js"></script>
   </head>
   <body>
     <a-scene>
       <a-assets>
-        <a-asset-item id="tree-gltf" src="./tree/tree01.gltf"></a-asset-item>
+        <audio id="soundtrack" src="./sounds/soundtrack.mp3"></audio>
+        <audio id="outsidesounds" src="./sounds/outside.mp3"></audio>
+        <audio id="snoringsounds" src="./sounds/snoring.mp3"></audio>
+        <audio id="happy" src="./sounds/happy.mp3" autoplay=false></audio>
+        
+        <!-- <a-asset-item id="tree-gltf" src="./tree/tree01.gltf"></a-asset-item> -->
         <a-asset-item id="cake-gltf" src="./cake/Cake_01.gltf"></a-asset-item>
         <a-asset-item id="table-gltf" src="./table/Table_Large_Rectangular_01.gltf"></a-asset-item>
-        <a-asset-item id="bucket-gltf" src="./bucket/bucket4.gltf"></a-asset-item>
+        <!-- <a-asset-item id="bucket-gltf" src="./bucket/bucket4.gltf"></a-asset-item> -->
         <a-asset-item id="bed-obj" src="bed/bed.obj"></a-asset-item>
         <a-asset-item id="bed-mtl" src="bed/bed.mtl"></a-asset-item>
         <a-asset-item id="guy-obj" src="skinnyguy/skinnyguy.obj"></a-asset-item>
         <a-asset-item id="guy-mtl" src="skinnyguy/skinnyguy.mtl"></a-asset-item>
         <a-asset-item id="cop-obj" src="cop/cop.obj"></a-asset-item>
         <a-asset-item id="cop-mtl" src="cop/cop.mtl"></a-asset-item>
+
         <img id="stone-texture" src="./textures/stones.png"></img>
         <img id="concrete-texture" src="./textures/concrete.png"></img>
-        <img id="poster" src="./textures/poster.png"></img>
-        <audio id="soundtrack" src="./sounds/soundtrack.mp3" preload="auto" volume=.8></audio>
-        <audio id="outsidesounds" src="./sounds/outside.mp3" preload = "auto"></audio>
-        <audio id="snoringsounds" src="./sounds/snoring.mp3"></audio>
       </a-assets>
 
+    <!-- all the objects -->
     <a-entity position="-1.950 -1.4 3.649">
 
       <!-- sound sources -->
@@ -38,21 +42,20 @@
         <!-- Trees -->
         <!-- <a-entity gltf-model="./tree/tree01.gltf" position="2308.3822980577343 -0.67 -2773" rotation="0 46 0" scale="4 4 4" material="color: black; emissiveIntensity: 0"></a-entity> -->
 
-
         <!-- Cake -->
-        <a-entity id="cake" gltf-model="#cake-gltf" position="89.05659833254235 299.3052096997687 672.4835385059337" scale="15 15 15" shadow="cast: true; receive: false"></a-entity>
+        <a-entity id="cake" gltf-model="#cake-gltf" position="89.05659833254235 299.3052096997687 672.4835385059337" scale="15 15 15" birthdaygreeting></a-entity>
 
         <!-- Table -->
         <a-entity id="table" gltf-model="#table-gltf" position="145.50449109984675 7.121892308906894 673.5393671721408" scale="30 40 30" rotation="0 90 0" shadow="cast: false; receive: true"></a-entity>
 
         <!-- Bucket -->
-        <a-entity id="bucket" gltf-model="#bucket-gltf" position="-1036.785459765963 -1.670101794063953 308.92265897959635" scale="0.5 0.5 0.5" rotation="270 0 0" shadow="cast: false; receive: true"></a-entity>
+        <!-- <a-entity id="bucket" gltf-model="#bucket-gltf" position="-1036.785459765963 -1.670101794063953 308.92265897959635" scale="0.5 0.5 0.5" rotation="270 0 0"></a-entity> -->
 
         <!-- Bed -->
         <a-entity id="bed" obj-model="obj:#bed-obj;mtl:#bed-mtl" position="962.48245.49 122" rotation="0 90.5 0" scale="445.91 445.917 445.917" shadow="cast: false; receive: true"></a-entity>
 
         <!-- Da guy -->
-        <a-entity id="guy" obj-model="obj:#guy-obj;mtl:#guy-mtl" position="-917.447 -420.9 665.189" rotation="0 127.1910180245661 0" scale="13.7 13.7 13.7" shadow="cast: false; receive: true"></a-entity>
+        <a-entity id="guy" obj-model="obj:#guy-obj;mtl:#guy-mtl" position="-917.447 -420.9 665.189" rotation="0 127.1910180245661 0" scale="13.7 13.7 13.7" shadow="cast: false; receive: false"></a-entity>
 
         <!-- Guard -->
         <a-entity id="cop" obj-model="obj:cop/cop.obj;mtl:cop/cop.mtl" position="-1626.289 0.050 -495.529" rotation="0 15.465 0" scale="126.745 126.74 126.74" sound="src:#snoringsounds;autoplay:true;volume:0.3;loop:true" shadow="cast: true; receive: false"></a-entity>
@@ -156,7 +159,7 @@
       <a-plane id="poster" position="5.99 3 0" rotation="0 -90 5" color="#efefef" src="./textures/poster.png" width=1.7 height=2.2 shadow="cast: false; receive: true"></a-plane>
 
       <!-- light -->
-      <a-light color="#fbf9a2" position="0.309 2.507 2.937" intensity="0.3" type="point" light="color:#f7a62d;intensity:50.24;castShadow:true;decay:17.400000000000002;penumbra:0.11;distance:17.23"></a-light>
+      <a-light color="#fbf9a2" position="0.309 2.507 2.937" intensity="0.3" type="point" light="color:#f7a62d;intensity:50.24;castShadow:true;decay:17.4;penumbra:0.11;distance:17.23"></a-light>
 
       <a-light color="#f7b937" position="-10.939327700557666 4.97794818947587 -6.182436812907182" intensity="0.5" type="point" rotation="4.972 -93.73272692733187 -13.784188816296268" light="color:#be31fb;intensity:1.63;castShadow:true;decay:1.15"></a-light>
 
@@ -166,7 +169,7 @@
 
     </a-entity>
 
-
+    <!-- camera -->
     <a-entity camera look-controls position="0 2 0">
       <a-entity cursor="fuse: true; fuseTimeout: 300"
                 position="0 0 -1"
