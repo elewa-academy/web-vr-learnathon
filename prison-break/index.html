@@ -3,11 +3,12 @@
   <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width">
-    <title>Prisonbreak</title>
+    <title>Prison Break</title>
     <script src="https://aframe.io/releases/0.8.0/aframe.min.js"></script>
     <script src="https://rawgit.com/feiss/aframe-environment-component/master/dist/aframe-environment-component.min.js"></script>
     <script src="./audiohandler-component.js"></script>
     <script src="./birthdaygreeting-component.js"></script>
+    <script src="//cdn.rawgit.com/donmccurdy/aframe-extras/v4.2.0/dist/aframe-extras.min.js"></script>
   </head>
   <body>
     <a-scene>
@@ -16,7 +17,7 @@
         <audio id="outsidesounds" src="./sounds/outside.mp3"></audio>
         <audio id="snoringsounds" src="./sounds/snoring.mp3"></audio>
         <audio id="happy" src="./sounds/happy.mp3" autoplay=false></audio>
-        
+
         <!-- <a-asset-item id="tree-gltf" src="./tree/tree01.gltf"></a-asset-item> -->
         <a-asset-item id="cake-gltf" src="./cake/Cake_01.gltf"></a-asset-item>
         <a-asset-item id="table-gltf" src="./table/Table_Large_Rectangular_01.gltf"></a-asset-item>
@@ -30,14 +31,17 @@
 
         <img id="stone-texture" src="./textures/stones.png"></img>
         <img id="concrete-texture" src="./textures/concrete.png"></img>
+
+        <a-mixin id="checkpoint"></a-mixin>
+        <a-mixin id="checkpoint-hovered" color="#6CEEB5"></a-mixin>
       </a-assets>
 
     <!-- all the objects -->
-    <a-entity position="-1.950 -1.4 3.649">
+    <a-entity position="-1.950 -0.4 3.649">
 
       <!-- sound sources -->
       <a-entity sound="src:#outsidesounds;autoplay:true;volume:0.9;loop:true" position="0 2 -15"></a-entity>
-      
+
       <a-entity scale="0.005 0.005 0.005">
         <!-- Trees -->
         <!-- <a-entity gltf-model="./tree/tree01.gltf" position="2308.3822980577343 -0.67 -2773" rotation="0 46 0" scale="4 4 4" material="color: black; emissiveIntensity: 0"></a-entity> -->
@@ -170,12 +174,23 @@
     </a-entity>
 
     <!-- camera -->
-    <a-entity camera look-controls position="0 2 0">
-      <a-entity cursor="fuse: true; fuseTimeout: 300"
-                position="0 0 -1"
-                geometry="primitive: ring; radiusInner: 0.02; radiusOuter: 0.03"
-                material="color: black; shader: flat">
+    <a-entity id="camera-checkpoint" movement-controls="controls: checkpoint" look-controls="controls: checkpoint" checkpoint-controls="mode: animate; animateSpeed: 1;" position="0 1 0">
+      <a-entity id="camera" camera>
+        <a-entity id="cursor" cursor="fuse: true; fuseTimeout: 2000"
+          position="0 0 -1"
+          geometry="primitive: ring; radiusInner: 0.02; radiusOuter: 0.03;"
+          material="color: #90f006; shader: flat;">
+        </a-entity>
       </a-entity>
+    </a-entity>
+
+    <!-- Checkpoints -->
+    <a-entity position="0 0.8 0">
+      <a-cylinder id="bed-checkpoint" checkpoint="" radius="1.5" height="0.1" position="1.21 0 3.647" material="visible:false" rotation="90 90 0" geometry=""></a-cylinder>
+      <a-cylinder id="cake-checkpoint" checkpoint="" radius="1.5" height="0.1" position="-1.403317081412041 0 5.435415485792367" material="visible:false" rotation="90 0 0" geometry=""></a-cylinder>
+      <a-cylinder id="skeleton-checkpoint" checkpoint="" radius="1.5" height="0.1" position="-4.762145551880797 0 5.006" material="visible:false" rotation="90 135 0" geometry=""></a-cylinder>
+      <a-cylinder id="guard-checkpoint" checkpoint="" radius="1.5" height="0.1" position="-6.720914556416834 0 2.962" material="visible:false" rotation="90 90 0" geometry=""></a-cylinder>
+      <a-cylinder id="window-checkpoint" checkpoint="" radius="1.5" height="0.1" position="0.13 0.0542758424360227 -0.12170787149369144" material="visible:false" rotation="90 0 0" geometry=""></a-cylinder>
     </a-entity>
 
     </a-scene>
