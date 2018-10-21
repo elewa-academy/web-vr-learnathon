@@ -40,11 +40,11 @@
         <a-entity gltf-model="#tree-gltf" position="931.2451897720775 1 -2639.73146639057">
         <a-plane rotation="-90 0 0" color="green" width="100" height="100" material="" geometry=""></a-plane></a-entity>
         <!-- Cake -->
-        <a-entity gltf-model="#cake-gltf" position="89.05659833254235 190.67998548780363 672.4835385059337" scale="10 10 10"></a-entity>
+        <a-entity id="cake" gltf-model="#cake-gltf" position="89.05659833254235 299.3052096997687 672.4835385059337" scale="15 15 15"></a-entity>
         <!-- Table -->
-        <a-entity gltf-model="#table-gltf" position="145.50449109984675 7.121892308906894 673.5393671721408" scale="20 25 25" rotation="0 90 0"></a-entity>
+        <a-entity id="table" gltf-model="#table-gltf" position="145.50449109984675 7.121892308906894 673.5393671721408" scale="30 40 30" rotation="0 90 0"></a-entity>
         <!-- Bucket -->
-        <a-entity gltf-model="#bucket-gltf" position="-968.7636302040321 -1.670101794063953 -591.6686255832393" scale="0.75 0.75 0.75" rotation="270 0 0"></a-entity>
+        <a-entity id="bucket" gltf-model="#bucket-gltf" position="-1036.785459765963 -1.670101794063953 -636.1078453828103" scale="0.5 0.5 0.5" rotation="270 0 0"></a-entity>
         <!-- Bed -->
         <a-entity id="bed" obj-model="obj:#bed-obj;mtl:#bed-mtl" position="962.48245.49 122" rotation="0 90.5 0" scale="445.91 445.917 445.917"></a-entity>
         <!-- Da guy -->
@@ -54,36 +54,36 @@
       </a-entity>
 
       <!-- floor and ceiling -->
-      <a-plane position="0 6 0" rotation="90 0 0" 
+      <a-plane position="0 6 0" rotation="90 0 0"
       color="grey" src="#concrete-texture" side="double"
       width=12 height=8 shadow="receive: true" normal-scale=5></a-plane>
-      <a-plane position="0 0.01 0" rotation="-90 0 0" 
+      <a-plane position="0 0.01 0" rotation="-90 0 0"
       color="#333" src="#concrete-texture" side="double"
       width=12 height=8 shadow="receive: true"></a-plane>
 
       <!-- walls without opening -->
-      <a-plane position="6 4 0" rotation="0 -90 0" 
+      <a-plane position="6 4 0" rotation="0 -90 0"
       color="#666" material="src: #stone-texture; repeat: 2 2" side="double"
-      width=8 height=8 shadow="receive: true"></a-plane> 
-      <a-plane position="0 2 4" rotation="180 0 0" 
+      width=8 height=8 shadow="receive: true"></a-plane>
+      <a-plane position="0 2 4" rotation="180 0 0"
       color="#666" material="src: #stone-texture; repeat: 3.1 2" side="double"
       width=12 height=8 shadow="receive: true"></a-plane>
 
       <!-- walll with door  -->
       <a-entity position="-6 4 0 shadow="receive: true"">
-        <a-box position="0 0 3" rotation="0 -90 0" 
-        color="grey" material="src: #stone-texture; repeat: 1 2" 
+        <a-box position="0 0 3" rotation="0 -90 0"
+        color="grey" material="src: #stone-texture; repeat: 1 2"
         width=4 height=8 depth=0.5></a-box>
-        <a-box position="0 0 -3" rotation="0 -90 0" 
+        <a-box position="0 0 -3" rotation="0 -90 0"
         color="grey" material="src: #stone-texture; repeat: .5 2"
         width=2 height=8 depth=0.5></a-box>
-        <a-box position="0 2 -.5" rotation="0 -90 0" 
+        <a-box position="0 2 -.5" rotation="0 -90 0"
         color="grey" material="src: #stone-texture; repeat: 1 1"
         width=3 height=4 depth=0.5></a-box>
 
         <a-box position="0 -4 -.5" rotation="0 -90 0" color="black"
         width=3 height=.2 depth=0.5></a-box>
-        <a-box position="0 0 -.5" rotation="0 -90 0" color="black" 
+        <a-box position="0 0 -.5" rotation="0 -90 0" color="black"
         width=3 height=.2 depth=0.5></a-box>
 
         <a-entity position="0 -2 -.5" rotation="0 0 0">
@@ -93,51 +93,51 @@
           <a-cylinder color="black" position="0 0 .2" height="5" radius=".05"></a-cylinder>
           <a-cylinder color="black" position="0 0 .6" height="5" radius=".05"></a-cylinder>
           <a-cylinder color="black" position="0 0 1" height="5" radius=".05"></a-cylinder>
-        </a-entity> 
+        </a-entity>
       </a-entity>
 
       <!-- prison hallway -->
       <a-entity position="-11 4 0" shadow="receive: true">
-        <a-plane position="2.5 -3.99 0" rotation="-90 0 0" 
+        <a-plane position="2.5 -3.99 0" rotation="-90 0 0"
         color="#333" src="#concrete-texture" side="double"
         width=5 height=20></a-plane>
-        <a-plane position="2.5 4 0" rotation="90 0 0" 
-        color="#333" src="#concrete-texture" side="double" 
+        <a-plane position="2.5 4 0" rotation="90 0 0"
+        color="#333" src="#concrete-texture" side="double"
         width=5 height=20></a-plane>
 
-        <a-plane position="5 0 7" rotation="180 90 0" 
+        <a-plane position="5 0 7" rotation="180 90 0"
         color="grey" material="src: #stone-texture; repeat: 2 2" side="double"
         width=6 height=8></a-plane>
-        <a-plane position="5 0 -7" rotation="180 90 0" 
-        color="grey" material="src: #stone-texture; repeat: 2 2" side="double" 
+        <a-plane position="5 0 -7" rotation="180 90 0"
+        color="grey" material="src: #stone-texture; repeat: 2 2" side="double"
         width=6 height=8></a-plane>
 
-        <a-plane position="2.5 0 -10" rotation="0 0 0" 
-        color="#333" material="src: #stone-texture; repeat: 2 2" side="double" 
+        <a-plane position="2.5 0 -10" rotation="0 0 0"
+        color="#333" material="src: #stone-texture; repeat: 2 2" side="double"
         width=5 height=8></a-plane>
-        <a-plane position="2.5 0 10" rotation="0 180 0" 
+        <a-plane position="2.5 0 10" rotation="0 180 0"
         color="#333" material="src: #stone-texture; repeat: 2 2" side="double"
         width=5 height=8></a-plane>
         <a-plane position="0 0 0" rotation="0 90 0" color="#333" side="double"
-        material="src: #stone-texture; repeat: 2 2" 
+        material="src: #stone-texture; repeat: 2 2"
         width=20 height=8></a-plane>
       </a-entity>
 
       <!-- wall with window -->
       <a-entity position="2 4 -4" rotation="0 -90 0" shadow="receive: true">
         <a-entity material="src: #stone-texture; repeat: 2 2">
-          <a-box position="0 0 4.5" rotation="0 90 0" 
-          color="grey" material="src: #stone-texture; repeat: 2 2" 
+          <a-box position="0 0 4.5" rotation="0 90 0"
+          color="grey" material="src: #stone-texture; repeat: 2 2"
           width=7 height=8 depth=0.5></a-box>
-          <a-box position="0 0 -2.5" rotation="0 90 0" color="grey" 
-          material="src: #stone-texture; repeat: .6 2" 
+          <a-box position="0 0 -2.5" rotation="0 90 0" color="grey"
+          material="src: #stone-texture; repeat: .6 2"
           width=3 height=8 depth=0.5></a-box>
-          <a-box position="0 -3 0" rotation="0 90 0" color="grey" 
-          material="src: #stone-texture; repeat: .5 .5" 
-          width=2 height=2 depth=0.5></a-box> 
-          <a-box position="0 2 0" rotation="0 90 0" 
-          color="grey" material="src: #stone-texture; repeat: 0.5 1" 
-          width=2 height=4 depth=0.5></a-box> 
+          <a-box position="0 -3 0" rotation="0 90 0" color="grey"
+          material="src: #stone-texture; repeat: .5 .5"
+          width=2 height=2 depth=0.5></a-box>
+          <a-box position="0 2 0" rotation="0 90 0"
+          color="grey" material="src: #stone-texture; repeat: 0.5 1"
+          width=2 height=4 depth=0.5></a-box>
         </a-entity>
         <a-entity position="0 -1 0">
           <a-cylinder color="black" position="0 0 -.6" height="2" radius=".05"></a-cylinder>
@@ -145,7 +145,7 @@
           <a-cylinder color="black" position="0 0 .2" height="2" radius=".05"></a-cylinder>
           <a-cylinder color="black" position="0 0 .6" height="2" radius=".05"></a-cylinder>
         </a-entity>
-      </a-entity> 
+      </a-entity>
 
       <!-- furniture -->
 
