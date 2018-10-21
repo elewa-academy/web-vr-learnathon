@@ -13,10 +13,10 @@
   <body>
     <a-scene>
       <a-assets>
-        <audio id="soundtrack" src="./sounds/soundtrack.mp3"></audio>
-        <audio id="outsidesounds" src="./sounds/outside.mp3"></audio>
-        <audio id="snoringsounds" src="./sounds/snoring.mp3"></audio>
-        <audio id="happy" src="./sounds/happy.mp3" autoplay=false></audio>
+        <audio id="soundtrack" src="./sounds/soundtrack.mp3" preload="auto"></audio>
+        <audio id="outsidesounds" src="./sounds/outside.mp3" preload="auto"></audio>
+        <audio id="snoringsounds" src="./sounds/snoring.mp3" preload="auto"></audio>
+        <audio id="happy" src="./sounds/happy.mp3" preload="auto"</audio>
 
         <!-- <a-asset-item id="tree-gltf" src="./tree/tree01.gltf"></a-asset-item> -->
         <a-asset-item id="cake-gltf" src="./cake/Cake_01.gltf"></a-asset-item>
@@ -28,6 +28,7 @@
         <a-asset-item id="guy-mtl" src="skinnyguy/skinnyguy.mtl"></a-asset-item>
         <a-asset-item id="cop-obj" src="cop/cop.obj"></a-asset-item>
         <a-asset-item id="cop-mtl" src="cop/cop.mtl"></a-asset-item>
+        <a-asset-item id="keys-gltf" src="./key/Key_01.gltf"></a-asset-item>
 
         <img id="stone-texture" src="./textures/stones.png"></img>
         <img id="concrete-texture" src="./textures/concrete.png"></img>
@@ -47,10 +48,10 @@
         <!-- <a-entity gltf-model="./tree/tree01.gltf" position="2308.3822980577343 -0.67 -2773" rotation="0 46 0" scale="4 4 4" material="color: black; emissiveIntensity: 0"></a-entity> -->
 
         <!-- Cake -->
-        <a-entity id="cake" gltf-model="#cake-gltf" position="89.05659833254235 299.3052096997687 672.4835385059337" scale="15 15 15" birthdaygreeting></a-entity>
+        <a-entity id="cake" gltf-model="#cake-gltf" position="89.05659833254235 299.3052096997687 672.4835385059337" scale="15 15 15"></a-entity>
 
         <!-- Table -->
-        <a-entity id="table" gltf-model="#table-gltf" position="145.50449109984675 7.121892308906894 673.5393671721408" scale="30 40 30" rotation="0 90 0" shadow="cast: false; receive: true"></a-entity>
+        <a-entity id="table" gltf-model="#table-gltf" position="145.50449109984675 7.121892308906894 673.5393671721408" scale="30 40 30" rotation="0 90 0" shadow="cast: false; receive: true" birthdaygreeting></a-entity>
 
         <!-- Bucket -->
         <!-- <a-entity id="bucket" gltf-model="#bucket-gltf" position="-1036.785459765963 -1.670101794063953 308.92265897959635" scale="0.5 0.5 0.5" rotation="270 0 0"></a-entity> -->
@@ -63,6 +64,9 @@
 
         <!-- Guard -->
         <a-entity id="cop" obj-model="obj:cop/cop.obj;mtl:cop/cop.mtl" position="-1626.289 0.050 -495.529" rotation="0 15.465 0" scale="126.745 126.74 126.74" sound="src:#snoringsounds;autoplay:true;volume:0.6;loop:true" shadow="cast: true; receive: false"></a-entity>
+
+        <!-- keys -->
+        <a-entity id="keys" gltf-model="./key/Key_01.gltf" position="-1483.2619979349045 12.65178970784309 -468.3582193903126" scale="1.7 1 1.4" rotation="-85.35809225975443 -116.05020150778422 75.19868630251102"></a-entity>
       </a-entity>
 
       <!-- floor and ceiling -->
@@ -82,7 +86,7 @@
       color="#666" material="src: #stone-texture; repeat: 3.1 2 roughness:.8"
       width=12 height=8 shadow="receive: true"></a-plane>
 
-      <!-- walll with door  -->
+      <!-- wall with door  -->
       <a-entity position="-6 4 0 shadow="receive: true"">
         <a-box position="0 0 3" rotation="0 -90 0"
         color="grey" material="src: #stone-texture; repeat: 1 2 roughness:.8"
